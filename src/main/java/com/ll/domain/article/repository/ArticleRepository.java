@@ -8,15 +8,18 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ArticleRepository {
-private final List<Article> articlesList= new ArrayList<>();
-int lastId = 0;
+    private final List<Article> articlesList = new ArrayList<>();
+    int lastId = 0;
 
     public List<Article> findForList() {
+        //역순 출력
         return articlesList
+                .reversed()
                 .stream()
                 .limit(5)
                 .collect(Collectors.toList());
     }
+
     public int findIndexById(int id) {
         return IntStream
                 .range(0, articlesList.size())
@@ -34,8 +37,11 @@ int lastId = 0;
     }
 
     public Article save(Article article) {
-        article.setId(++lastId);
-        articlesList.add(article);
+        if (article.isNew()) {
+            article.setId(++lastId);
+            articlesList.add(article);
+            return article;
+        }
         return article;
     }
 

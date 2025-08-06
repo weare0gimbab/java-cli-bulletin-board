@@ -25,8 +25,7 @@ public class ArticleService {
         return articleRepository.findById(id);
     }
 
-    public void modify(Article article,int id, String title, String content, String currentDate) {
-        article.setId(id);
+    public void modify(Article article, String title, String content, String currentDate) {
         article.setTitle(title);
         article.setContent(content);
         article.setRegDate(currentDate);

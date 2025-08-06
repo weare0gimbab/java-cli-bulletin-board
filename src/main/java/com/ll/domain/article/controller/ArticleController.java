@@ -52,12 +52,13 @@ public class ArticleController {
 
     public static void updateArticle(Rq rq) {
         int id=rq.getParamsAsInt("id", -1);
-        System.out.print("제목 (현재: " + articleService.findById(id).getTitle() + "): \n");
+        System.out.print("\n제목 (현재: " + articleService.findById(id).getTitle() + "): ");
         String title = App.scanner.nextLine().trim();
-        System.out.print("내용 (현재: " + articleService.findById(id).getContent() + "): \n");
+        System.out.print("\n내용 (현재: " + articleService.findById(id).getContent() + "): ");
         String content = App.scanner.nextLine().trim();
+
         Article aricle = articleService.findById(id);
-        articleService.modify(aricle,id, title, content, getCurrentDate());
+        articleService.modify(aricle, title, content, getCurrentDate());
         System.out.println("게시글이 수정되었습니다.");
     }
 }
