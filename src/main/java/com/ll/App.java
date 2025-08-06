@@ -1,6 +1,7 @@
 package com.ll;
 
 import com.ll.domain.article.controller.ArticleController;
+import com.ll.global.rq.Rq;
 
 import java.util.Scanner;
 
@@ -15,26 +16,28 @@ public class App {
     public static void run() {
         while (true) {
             System.out.print("명령어: ");
-            String cmd = App.scanner.nextLine().trim();
-            switch (cmd) {
+            String cmd = App.scanner.nextLine();
+            Rq rq = new Rq(cmd);
+
+            switch (rq.getActionName()) {
                 case "exit" -> {
                     System.out.println("프로그램을 종료합니다.");
                     return;
                 }
                 case "write" -> {
                     ArticleController.writeArticle();
-                    break;
                 }
                 case "list" -> {
                     ArticleController.listArticle();
-                    break;
                 }
                 case "detail" -> {
-                    ArticleController.showDetail(1);
-                    break;
+                    ArticleController.showDetail(rq);
+                }
+                case "modify" -> {
+                    ArticleController.updateArticle(rq);
                 }
                 case "delete" -> {
-                    ArticleController.deleteArticle(1);
+                    ArticleController.deleteArticle(rq);
                     break;
                 }
                 default -> System.out.println("알 수 없는 명령어입니다.");

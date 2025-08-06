@@ -20,4 +20,16 @@ public class ArticleService {
         articleRepository.save(article);
         return article;
     }
+
+    public Article findById(int id) {
+        return articleRepository.findById(id);
+    }
+
+    public void modify(Article article,int id, String title, String content, String currentDate) {
+        article.setId(id);
+        article.setTitle(title);
+        article.setContent(content);
+        article.setRegDate(currentDate);
+        articleRepository.save(article);
+    }
 }
