@@ -50,9 +50,9 @@ public class ArticleController {
 
     public static void updateArticle(Rq rq) {
         int id=rq.getParamsAsInt("id", -1);
-        System.out.println("제목 (현재: " + articleService.findById(id).getTitle() + "): ");
+        System.out.print("제목 (현재: " + articleService.findById(id).getTitle() + "): \n");
         String title = App.scanner.nextLine().trim();
-        System.out.println("내용 (현재: " + articleService.findById(id).getContent() + "): ");
+        System.out.print("내용 (현재: " + articleService.findById(id).getContent() + "): \n");
         String content = App.scanner.nextLine().trim();
         Article aricle = articleService.findById(id);
         articleService.modify(aricle,id, title, content, getCurrentDate());

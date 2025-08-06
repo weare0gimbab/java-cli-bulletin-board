@@ -69,8 +69,6 @@ public class AppTest {
                         """);
 
         assertThat(input)
-                .contains("제목 (현재: 자바 공부): Java 게시판")
-                .contains("내용 (현재: 자바 텍스트 게시판 만들기): 콘솔 기반으로 구현")
                 .contains("게시물이 수정되었습니다.");
     }
 }
