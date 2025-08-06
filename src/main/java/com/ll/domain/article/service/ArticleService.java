@@ -32,4 +32,14 @@ public class ArticleService {
         article.setRegDate(currentDate);
         articleRepository.save(article);
     }
+
+    public boolean delete(int id) {
+       Article article =articleRepository.findById(id);
+
+        if (article == null) return false;
+
+        articleRepository.delete(article);
+
+        return true;
+    }
 }

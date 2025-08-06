@@ -38,4 +38,12 @@ int lastId = 0;
         articlesList.add(article);
         return article;
     }
+
+    public void delete(Article article) {
+        int index = findIndexById(article.getId());
+
+        if (index != -1) {
+            articlesList.remove(index);
+        }
+    }
 }

@@ -69,6 +69,20 @@ public class AppTest {
                         """);
 
         assertThat(input)
-                .contains("게시물이 수정되었습니다.");
+                .contains("게시글이 수정되었습니다.");
+    }
+    @Test
+    @DisplayName("삭제")
+    public void testDelete() {
+
+        String input = AppTestRunner.run("""
+                        write
+                        자바 공부
+                        자바 텍스트 게시판 만들기
+                        delete 1
+                        """);
+
+        assertThat(input)
+                .contains("게시글이 삭제되었습니다.");
     }
 }

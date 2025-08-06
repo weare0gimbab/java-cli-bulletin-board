@@ -39,8 +39,10 @@ public class ArticleController {
         System.out.printf("등록일 : %s\n", article.getRegDate());
     }
 
-    public static void deleteArticle(Rq id) {
-        System.out.println("게시물이 삭제되었습니다.");
+    public static void deleteArticle(Rq rq) {
+        int id = rq.getParamsAsInt("id", -1);
+        articleService.delete(id);
+        System.out.println("게시글이 삭제되었습니다.");
     }
     public static String getCurrentDate() {
         LocalDate now = LocalDate.now();
@@ -56,6 +58,6 @@ public class ArticleController {
         String content = App.scanner.nextLine().trim();
         Article aricle = articleService.findById(id);
         articleService.modify(aricle,id, title, content, getCurrentDate());
-        System.out.println("게시물이 수정되었습니다.");
+        System.out.println("게시글이 수정되었습니다.");
     }
 }
