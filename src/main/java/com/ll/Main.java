@@ -2,6 +2,7 @@ package com.ll;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        App app = new App(new java.util.Scanner(System.in));
+        App.run();
     }
 }
