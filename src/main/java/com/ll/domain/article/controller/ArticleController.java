@@ -4,9 +4,12 @@ import com.ll.App;
 import com.ll.Article;
 import com.ll.domain.article.service.ArticleService;
 
-public class ArticleController {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+public class ArticleController {
     private static ArticleService articleService = new ArticleService();
+
     public static void writeArticle() {
         System.out.print("제목: ");
         String title = App.scanner.nextLine().trim();
@@ -19,7 +22,7 @@ public class ArticleController {
     }
 
     public static void listArticle() {
-        System.out.println("번호 | 제목       | 등록일");
+        System.out.println("번호 |  제목  | 등록일");
         System.out.println("-----------------------------");
         for(Article article: articleService.findForList()) {
             System.out.printf("%d | %s | %s\n", article.getId(), article.getTitle(), article.getRegDate());
@@ -32,8 +35,9 @@ public class ArticleController {
     public static void deleteArticle(int id) {
         System.out.println("게시물이 삭제되었습니다.");
     }
-    public static String getCurrentDate(){
-        java.util.Date date = new java.util.Date();
-        return String.format("%tF %<tT", date);
+    public static String getCurrentDate() {
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+        return now.format(formatter);
     }
 }

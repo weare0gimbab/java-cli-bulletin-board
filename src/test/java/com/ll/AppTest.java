@@ -34,8 +34,8 @@ public class AppTest {
                         """);
 
         assertThat(input)
-                .contains("번호 | 제목       | 등록일")
+                .contains("번호 |  제목  | 등록일")
                 .contains("-----------------------------")
-                .contains("1    | 자바 공부  | ");
+                .contains("1 | 자바 공부 | 25-08-06");
     }
 }
