@@ -1,5 +1,7 @@
 package com.ll;
 
+import com.ll.domain.article.controller.ArticleController;
+
 import java.util.Scanner;
 
 public class App {
@@ -20,19 +22,19 @@ public class App {
                     return;
                 }
                 case "write" -> {
-                    ArticleRepository.ActionWrite();
+                    ArticleController.writeArticle();
                     break;
                 }
                 case "list" -> {
-                    ArticleRepository.ActionList();
+                    ArticleController.listArticle();
                     break;
                 }
                 case "detail" -> {
-                    ArticleRepository.ActionDetail();
+                    ArticleController.showDetail(1);
                     break;
                 }
                 case "delete" -> {
-                    ArticleRepository.ActionDelete();
+                    ArticleController.deleteArticle(1);
                     break;
                 }
                 default -> System.out.println("알 수 없는 명령어입니다.");
